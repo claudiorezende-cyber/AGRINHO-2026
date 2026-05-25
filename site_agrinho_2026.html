@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 - Conectando Campo e Tecnologia</title>
+    <style>
+        /* Variáveis de Cores e Estilo */
+        :root {
+            --primary-color: #2e7d32; /* Verde Escuro */
+            --secondary-color: #4caf50; /* Verde Claro */
+            --accent-color: #ff9800; /* Laranja/Ouro */
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --bg-light: #f4f9f4;
+            --card-bg: #ffffff;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        header .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Seção Hero (Destaque Principal) */
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(46, 125, 50, 0.6)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn-cta {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+
+        /* Container de Conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Seção Sobre */
+        .about {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 20px auto 0 auto;
+            color: #555;
+        }
+
+        /* Grid de Pilares/Objetivos */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Seção do Projeto Escolar (Idéia Proposta) */
+        .project-highlight {
+            background-color: #e8f5e9;
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-highlight h3 {
+            color: var(--primary-color);
+            font-size: 26px;
+        }
+
+        .project-highlight ul {
+            list-style-position: inside;
+            margin-top: 10px;
+        }
+
+        .project-highlight li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        footer p span {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com o Menu -->
+    <header>
+        <div class="logo">AGRINHO<span>2026</span></div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#projeto">Nosso Projeto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner Principal (Hero) -->
+    <section class="hero" id="inicio">
+        <h1>Inovação e Sustentabilidade no Campo</h1>
+        <p>Desenvolvendo soluções tecnológicas para o agronegócio do futuro, preservando nossa essência e cuidando do meio ambiente.</p>
+        <a href="#projeto" class="btn-cta">Conhecer Nossa Ideia</a>
+    </section>
+
+    <!-- Conteúdo Central -->
+    <main class="container">
+        
+        <!-- Seção Sobre -->
+        <section class="about" id="sobre">
+            <h2>O Projeto Agrinho</h2>
+            <p>O Agrinho é o maior programa de responsabilidade social do Sistema FAEP, integrando a educação básica às realidades, desafios e potencialidades do campo brasileiro. Em 2026, nosso foco está em unir as mentes jovens à tecnologia inteligente para criar um ecossistema rural mais forte, sustentável e eficiente.</p>
+        </section>
+
+        <!-- Seção de Pilares (Cards) -->
+        <section class="pillars" id="pilares">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3>Sustentabilidade</h3>
+                <p>Práticas conscientes que preservam o solo, protegem os recursos hídricos e garantem um futuro fértil para as próximas gerações rurais.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Tecnologia Digital</h3>
+                <p>Uso de inteligência artificial, automação, drones e sensores IoT para otimizar os cultivos de pequenos e grandes produtores.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Cidadania e Ética</h3>
+                <p>Engajamento social e cooperativismo transformando a comunidade escolar e o cotidiano das famílias do campo.</p>
+            </div>
+        </section>
+
+        <!-- Destaque do Projeto Escolhido pela Escola -->
+        <section class="project-highlight" id="projeto">
+            <h3>💡 Nossa Proposta: Horta Inteligente Autônoma</h3>
+            <p>Para o concurso deste ano, nossa equipe projetou uma solução voltada à agricultura familiar e escolar. Combinamos sensores de umidade de baixo custo e um sistema automatizado de irrigação gota-a-gota.</p>
+            
+            <h4>Principais Recursos e Benefícios:</h4>
+            <ul>
+                <li><strong>Economia de Água:</strong> O sistema só irriga quando o sensor detecta real necessidade no solo.</li>
+                <li><strong>Energia Limpa:</strong> Alimentação do circuito feita por mini painéis solares fotovoltaicos.</li>
+                <li><strong>Monitoramento por App:</strong> Gráficos simples que mostram a saúde das plantas em tempo real para os alunos e professores.</li>
+            </ul>
+            <p>Com isso, reduzimos o desperdício de insumos e ensinamos programação, robótica e botânica de maneira prática e transformadora!</p>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 - Projeto Desenvolvido para o Concurso Agrinho | Escola Conectada</p>
+        <p style="margin-top: 5px; font-size: 12px;">Feito com <span>❤️</span> e código puro (HTML5 e CSS3)</p>
+    </footer>
+
+</body>
+</html>
